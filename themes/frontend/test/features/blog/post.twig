@@ -1,0 +1,81 @@
+{% extends '_layout.' + getConfig('viewExtension') %}
+
+{% block headExtends %}
+    <title>{{ post.title }}</title>
+    {{ getPlugin('post_' + post.id, 'head_tag') | async | default_seo_value(post.title, 'bootstrap, corporate, html, responsive, corlate', 'Free Responsive Business HTML Template') | safe }}
+    {{ getPlugin('facebook', 'head_tag', {url: url, fb_share_type: 'article', fb_share_image: post.image, fb_share_description: post.intro_text }) | async | safe }}
+{% endblock %}
+
+{% block content %}
+    <section id="blog" class="container">
+        <div class="blog">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="blog-item">
+                        {#{% if post.image %}
+                            <img class="img-responsive img-blog" src="{{ post.image }}" width="100%" alt=""/>
+                        {% endif %}#}
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2 text-center">
+                                <div class="entry-meta">
+                                    <span id="publish_date">{{ post.published_at | moment("ll") }}</span>
+                                </div>
+                                <div class="entry-meta">
+                                    <span id="publish_date">{{ post.categories }}</span>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12 col-sm-10 blog-content">
+                                {#<h2>{{ post.title | safe }}</h2>#}
+
+                                <p>{{ post.full_text | safe }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.blog-item-->
+                </div>
+                <!--/.col-md-8-->
+
+                {#<aside class="col-md-4">
+                    {{ getSidebar("right-sidebar") | async | safe }}
+                </aside>#}
+
+            </div>
+            <!--/.row-->
+
+        </div>
+        <!--/.blog-->
+
+    </section><!--/#blog-->
+
+    <article>
+        <div class="relate-post">
+            <h4>Releate Post</h4>
+            <div class="row">
+                {% for relate in relatedPosts %}
+                    <div class="col-sm-6">
+                        <ul class="posts-list">
+                            <li>
+                                <div class="widget-thumb">
+                                    <a href="/blog/posts/{{ relate.id }}/{{ relate.alias }}"><img class="related_img" alt="" src="{{ relate.image }}"></a>
+                                </div>
+                                <div class="widget-content">
+                                    <a href="/blog/posts/{{ relate.id }}/{{ relate.alias }}">{{ relate.title }}</a>
+                                    <div class="meta">
+                                                    <span><i class="ico-calendar-alt-fill"></i>
+                                                    {{ relate.published_at | moment("ll")  }}</span>
+                                        <span><i class="ico-tag"></i>
+                                                    Technology</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                        </ul>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </article>
+{% endblock %}
+

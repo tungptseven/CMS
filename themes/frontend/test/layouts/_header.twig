@@ -1,0 +1,183 @@
+<header class="site-header">
+        <nav class="navbar navbar-default navbar-intimate role="
+        data-offset-top="50" data-spy="affix">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Start Toggle Nav For Mobile -->
+                     <button class="navbar-toggle" data-target="#navigation"
+                    data-toggle="collapse" type="button"><span class=
+                    "sr-only">Toggle navigation</span> <span class=
+                    "icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span></button>
+                    <div class="logo">
+                        <a class="navbar-brand" href="/"><i class=
+                        "ico-3dglasses"></i></a>
+                    </div>
+                </div><!-- Stat Search -->
+                <div class="side">
+                    <a class="show-search"><i class="ico-search"></i></a>
+                </div><!-- Form for navbar search area -->
+                <form class="full-search">
+                    <div class="container">
+                        <div class="row">
+                            <input class="form-control" placeholder="Search"
+                            type="text"> <a class="close-search"><span class=
+                            "ico-times"></span></a>
+                        </div>
+                    </div>
+                </form><!-- Search form ends -->
+                <!-- Navigation Start -->
+                <div class="navbar-collapse collapse" id="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown dropdown-toggle active">
+                            <a data-toggle="dropdown" href=
+                            "index.html">Home</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="fullscreen-slider.html">Home -
+                                    Fullscreen Slider</a>
+                                </li>
+                                <li>
+                                    <a href="carousel-slider.html">Home - Post
+                                    Carousel</a>
+                                </li>
+                                <li>
+                                    <a href="index.html">Home - Default</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-toggle">
+                            <a data-toggle="dropdown" href=
+                            "portfolio.html">Portfolio</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="portfolio-col-3.html">Portfolio 3
+                                    column</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-col-4.html">Portfolio 4
+                                    column</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-item.html">Single
+                                    Project</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-toggle">
+                            <a data-toggle="dropdown" href="#">Blog</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="blog.html">Blog View</a>
+                                </li>
+                                <li>
+                                    <a href="single.html">Single Post</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#">Download</a>
+                        </li>
+                    </ul>
+                </div><!-- Navigation End -->
+            </div>
+        </nav><!-- Mobile Menu Start -->
+        <ul class="wpb-mobile-menu">
+            <li class="active">
+                <a href="#">Home</a>
+                <ul>
+                    <li>
+                        <a href="fullscreen-slider.html">Home - Fullscreen
+                        Slider</a>
+                    </li>
+                    <li>
+                        <a href="carousel-slider.html">Home - Post Carousel</a>
+                    </li>
+                    <li class="active">
+                        <a href="index.html">Home - Default</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+                <ul>
+                    <li>
+                        <a href="portfolio-col-3.html">Portfolio 3 column</a>
+                    </li>
+                    <li>
+                        <a href="portfolio-col-4.html">Portfolio 4 column</a>
+                    </li>
+                    <li>
+                        <a href="portfolio-item.html">Single Project</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Blog</a>
+                <ul>
+                    <li>
+                        <a href="blog.html">Blog View</a>
+                    </li>
+                    <li>
+                        <a href="single.html">Single Post</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+            <li>
+                <a href="#">Download</a>
+            </li>
+        </ul><!-- Mobile Menu End -->
+    </header>
+
+{% if headerLayout === 'image' %}
+<section class="text-center" id="hero-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="intro-area">
+                    <h2 class="page-title">{{ postTitle }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% elif headerLayout === 'detailpost' %}
+<section class="text-center" id="hero-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="intro-area">
+                    <h2 class="page-title">{{ postTitle }}</h2>
+                    <div class="entry-meta">
+                            <span class="meta-part"><i class="ico-user"></i>
+                            <a href="#">James Maclern</a></span> <span class="meta-part"><i class="ico-calendar-alt-fill"></i>
+                            <a href="#">January 7, 2015</a></span> <span class="meta-part"><i class="ico-comments"></i> <a href="#">20</a></span> <span class="meta-part"><i class="ico-tag"></i> <a href="#">Tech</a></span>
+                        <span class="meta-part"><i class="ico-star"></i>
+                            <a href="#">7.5</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="entry-title">Contact Us</h2>
+                <div class="breadcrumb">
+                    <a href="#"><i class="icon-home"></i> Home</a>
+                    <span class="crumbs-spacer"><i class="ico-fast-forward"></i></span> <span class="current">Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

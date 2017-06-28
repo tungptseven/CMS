@@ -10,7 +10,7 @@ module.exports = {
        port: '5432',
        database: 'arrowjs',
        username: 'postgres',
-       password: '123456',
+       password: 'abc',
        dialect: 'postgres',
        logging: false
     },

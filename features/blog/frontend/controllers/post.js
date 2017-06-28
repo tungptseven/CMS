@@ -39,6 +39,13 @@ module.exports = function (controller, component, app) {
     controller.postDetail = function (req, res) {
         let postId = req.params.postId;
 
+        /*app.models.rawQuery("SELECT * FROM arr_post WHERE categories LIKE '%:" + cate +":%'").then((results) => {
+         console.log(results)
+         });*/
+
+
+        //SELECT * FROM arr_post WHERE categories LIKE '%:" + cate +":%' OR categories LIKE '%:" + cate +":%' OR categories LIKE '%:" + cate +":%'
+
         app.feature.blog.actions.find({
             where: {
                 id: postId,
@@ -58,6 +65,18 @@ module.exports = function (controller, component, app) {
                         }
                     }
                 }
+
+                // Get all related posts base on Categories
+                let sql = 'SELECT * FROM arr_post WHERE ';
+                category_ids.forEach((item, index) => {
+                    if (index === 0) {
+                        sql += "categories LIKE '%:" + item + ":%'";
+                    } else
+                        sql += " OR categories LIKE '%:" + item + ":%'";
+                })
+
+
+
                 // Query category contain post and render
                 app.feature.category.actions.findAll({
                     where: {
@@ -66,16 +85,23 @@ module.exports = function (controller, component, app) {
                         }
                     }
                 }).then(function (categories) {
-                    // Render view
-                    res.frontend.render('post', {
-                        post: post,
-                        categories: categories
+                    app.models.rawQuery(sql).then((results) => {
+                        console.log(results[0])
+                        res.frontend.render('post', {
+                            post: post,
+                            categories: categories,
+                            headerLayout: 'image',
+                            postTitle: post.title,
+                            relatedPosts: results[0]
+                        });
                     });
+
                 });
             } else {
                 // Redirect to 404 if post not exist
                 res.frontend.render('_404');
             }
+
         });
     };
 
